@@ -2,12 +2,9 @@
 <head>
   <title>Hackbook</title>
   <!-- See https://developers.facebook.com/docs/opengraph/ -->
-  <meta property="og:title" content="Hackbook for Mobile Web" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://apps.facebook.com/mobile-start/" />
-  <meta property="og:site_name" content="Hackbook for Mobile Web" />
-  <meta property="og:image" content="http://www.facebookmobileweb.com/hackbook/img/facebook_icon_large.png"/>
-  <meta property="fb:admins" content="20901205" />
+  <meta property="og:title" content="TennisMe" />
+  <meta property="og:url" content="http://tennis-me.com/" />
+  <meta property="og:site_name" content="TennisMe mobile" />
   
   <!-- See http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -38,63 +35,9 @@
       <div class="show_when_connected">
         <div id="welcome"><img id="user-picture" /><br /><span id="user-name"></span></div>
       </div>
-
-     <ul>
-        <li class="menu-item" onclick="openPage('Login');">Login and Permissions</li>
-    </ul>
-  </div>
-  
-  <!-- Page: Login and Permissions -->
-  <div id="page-Login" class="page"> 
-    <p id="main-desc">
-      Facebook Platform uses the OAuth 2.0 protocol for logging a user into your app.
-      The Login button in the top right of this app, shown when you're logged out, is a good example.<br /><br />
-      <strong>Check out the mobile web app tutorial at <a href="http://developers.facebook.com/docs/mobile/web/build//">developers.facebook.com/docs/mobile/web/build/</a></strong>
-    </p>
-      
-    <div class="section">
       <div class="show_when_not_connected">
-        <h1>Logging the user in</h1>
-        <p>
-          If a user visit your site directly, you will need to ask them to login with Facebook.
-        </p>
+        <div id="login_button" class="button" onclick="promptLogin()">Login using Facebook</div>
       </div>
-      <div class="show_when_connected">
-        <h1>Logging the user out</h1>
-        <p>
-          You should include a button to enable the user to log out.  Also, you can include a button so that the user can uninstall your app.
-        </p>
-      </div>
-      
-      <div class="show_when_not_connected">
-        <div id="login_button" class="button" onclick="promptLogin()" />Login using Facebook</div>
-      </div>
-      <div class="show_when_connected">
-        <div id="login_button" class="button" onclick="logout()" />Logout</div>
-        <div id="login_button" class="button" onclick="uninstallApp()" />Uninstall app</div>
-      </div>
-    </div>
-  
-    <div class="section">
-      <h1>Asking for extended permissions</h1>
-      <p>
-        If your app needs more than this basic information to function, you must request specific permissions from the user.
-        For example, you might prompt the user to grant access to their Likes in order to recommend related content for them.
-      </p>
-
-      <div id="disabled_perm_user_likes">
-        <div id="extended_permission_button" class="button button-requires-connect" onclick="promptPermission('user_likes')" />Grant the 'user_likes' permission</div>
-      
-        <div class="info-requires-connect">You need to login before you can use this functionality.</div>
-      </div>
-      <div id="enabled_perm_user_likes">
-        <div class="show_when_connected">
-          <p>
-            You've already granted the user_likes permission previously so the button isn't shown.
-          </p>
-      </div>
-      </div>
-    </div>
   </div>
   
  
