@@ -26,6 +26,8 @@
   <!-- facebook js sdk -->
   <script src="js/lib/fb/facebook-js-sdk.js"></script> 
 
+  <script src="js/fb/ui.js"></script>
+  <script src="js/fb/auth.js"></script>
   <!-- Angular -->
   <script src="js/lib/angular/angular.min.js"></script>
   <script src="js/app.js"></script>
@@ -35,13 +37,43 @@
 </head>
 
 <body>
-  <!-- This initializes the Facebook JS SDK. -->
-  <div id="fb-root">
-
-  <fb:login-button show-faces="true" max-rows="1" 
-    size="large"></fb:login-button>
+<div id="fb-root"></div>
+  <div id="action">
+    <div id="loading-icon"></div>
+  
+    <div id="msg"></div>
   </div>
+
+  <!-- Page: Homepage -->
+  <div id="page-root" class="page">
+      <div class="show_when_connected">
+        {{scope.name}}}
+        <!-- avec angular, recup via un binding la photo et le userId-->
+        <div id="welcome"><img id="user-picture" /><br /><span id="user-name"></span></div>
+      </div>
+      <div class="show_when_not_connected">
+        <div id="login_button" class="button" onclick="promptLogin()">Login using Facebook</div>
+      </div>
+  </div>
+  
  
+ <div id="deviceready"></div>
+ 
+  <script>
+      // Initialize the Facebook SDK
+      document.addEventListener('deviceready', function() {
+          FB.init({
+              appId: '559892864037339',
+              nativeInterface: CDV.FB,
+              useCachedDialogs: false
+          });
+      
+          FB.getLoginStatus(handleStatusChange);
+      
+          authUser();
+          updateAuthElements();
+      });
+  </script>
   
 </body>
 </html>

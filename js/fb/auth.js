@@ -30,7 +30,7 @@ function handleStatusChange(session) {
             document.body.className = 'connected';
 
             user = response;
-            
+            $scope.user=response;
             console.log('Got the user\'s name and picture: ' + JSON.stringify(response));
             
             //Update display of user name and picture
