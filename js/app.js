@@ -1,21 +1,8 @@
-angular.module('super-awesome-demo',['shoppinpal.mobile-menu'])
+angular.module('tennis-me',['shoppinpal.mobile-menu', '$strap.directives'])
     .config(['$routeProvider',function($routeProvider){
-        $routeProvider
-            .when("/skinny", {
-                templateUrl: "skinny.html"//,
-                //controller: "SkinnyCtrl"
-            })
-            .when("/wide", {
-                templateUrl: "wide.html"//,
-                //controller: "WideCtrl"
-            })
-            .otherwise({
-                redirectTo: "/skinny"
-            });
-    }]);
-//    .controller('SkinnyCtrl', ['$scope', '$routeParams', DummyCtrl])
-//    .controller('WideCtrl', ['$scope', '$routeParams', DummyCtrl]);
-//
-//function DummyCtrl($scope, $routeParams) {
-//
-//}
+        $routeProvider.
+      when('/slots', {templateUrl: 'partials/slots.html',   controller: 'SlotsCtrl'}).
+      when('/clubs', {templateUrl: 'partials/clubs.html',   controller: 'ClubsCtrl'}).
+      when('/account', {templateUrl: 'partials/account.html',   controller: 'AccountCtrl'}).
+      otherwise({redirectTo: '/slots'});
+}]);
