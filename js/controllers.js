@@ -10,6 +10,10 @@ function SlotsCtrl ($scope,$location, $http) {
       .success(function(data, status) {
            $scope.slots = data;
     });
+
+  $scope.page = function (path) {
+      $location.path(path);
+  };
 };
 
 function ClubsCtrl ($scope, $http) {
