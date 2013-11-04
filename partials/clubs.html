@@ -1,13 +1,19 @@
-<div id="sp-nav">
+<div id="sp-nav" ng-controller="NavCtrl">
     <div class="topcoat-list-container">
         <ul class="topcoat-list">
-            <li class="topcoat-list__item">Vos dispos</li>
-            <li class="topcoat-list__item">Clubs et terrains</li>
-            <li class="topcoat-list__item">Votre compte</li>
+           <li class="topcoat-list__item">
+                <button class="topcoat-button--quiet" ng-click="page('/dispos')">Vos dispos</button>
+            </li>
+            <!-- <li class="topcoat-list__item" ng-click="page('/slots')">Vos dispos</li> -->
+            <li class="topcoat-list__item">
+                <button class="topcoat-button--quiet" ng-click="page('/clubs')">Clubs et terrains</button>
+            </li>
+            <li class="topcoat-list__item">
+                <button class="topcoat-button--quiet" ng-click="page('/account')">Votre compte</button>
+            </li>
         </ul>
     </div>
 </div>
-
 <div id="sp-page">
     <div class="topcoat-navigation-bar">
         <div class="topcoat-navigation-bar__item left quarter">

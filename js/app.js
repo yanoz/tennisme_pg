@@ -1,4 +1,4 @@
-angular.module('tennis-me',['shoppinpal.mobile-menu', '$strap.directives'])
+var tennisme = angular.module('tennisme',['shoppinpal.mobile-menu', '$strap.directives'])
     .config(['$routeProvider',function($routeProvider){
         $routeProvider.
       when('/slots', {templateUrl: 'partials/slots.html',   controller: 'SlotsCtrl'}).
