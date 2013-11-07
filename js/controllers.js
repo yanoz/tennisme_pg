@@ -4,12 +4,10 @@ function NavCtrl($scope, $location) {
   };
 }
 
-function SlotsCtrl ($scope,$location, $http) {
-	$http.defaults.useXDomain = true;
-  $http({method: 'GET', url: 'http://tennis-me.com/slots.json?auth_token=zvLgHfsSMKb8B7yjGGUj'})
-      .success(function(data, status) {
-           $scope.slots = data;
-    });
+function SlotsCtrl ($scope,$location, $http, getSlots) {
+  getSlots.async().then(function(d) {
+    $scope.slots = d;
+  });
 
   $scope.page = function (path) {
       $location.path(path);
