@@ -34,8 +34,6 @@ tennisme.factory('getSlots', function($http) {
     	$http.defaults.useXDomain = true;
       	// $http returns a promise, which has a then function, which also returns a promise
      	var promise = $http.get('http://tennis-me.com/slots.json?auth_token=zvLgHfsSMKb8B7yjGGUj').then(function (response) {
-        // The then function here is an opportunity to modify the response
-        console.log(response);
         // The return value gets picked up by the then in the controller.
         return response.data;
       });
@@ -45,5 +43,22 @@ tennisme.factory('getSlots', function($http) {
   };
   return getSlots;
 });
+
+tennisme.factory('getProfile', function($http) {
+  var getProfile = {
+    async: function() {
+      $http.defaults.useXDomain = true;
+        // $http returns a promise, which has a then function, which also returns a promise
+      var promise = $http.get('http://tennis-me.com/account.json?auth_token=zvLgHfsSMKb8B7yjGGUj').then(function (response) {
+        return response.data;
+      });
+      // Return the promise to the controller
+      return promise;
+    }
+  };
+  return getProfile;
+});
+
+
 
 
