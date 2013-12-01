@@ -30,23 +30,18 @@
         <h2 class="topcoat-list__header">Votre compte</h2>
         <ul class="topcoat-list">
             <li class="topcoat-list__item"><label class="label-account">Nom <input type="text" class="topcoat-text-input" ng-model="name"></li>
-            <li class="topcoat-list__item">Sexe
-            <label class="topcoat-radio-button__label">
+            <li class="topcoat-list__item"><label class="label-account">Sexe
+            <label class="topcoat-radio-button__label" value=>
                 Femme
-                <input type="radio" name="topcoat" ng-model="gender">
+                <input type="radio" name="topcoat" ng-model="gender" value="F">
                  Homme
-                <input type="radio" name="topcoat" ng-model="gender">
+                <input type="radio" name="topcoat" ng-model="gender" value="M">
                 <div class="topcoat-radio-button"></div>
             </label>
            </li>
             <li class="topcoat-list__item"><label class="label-account">Email <input type="text" class="topcoat-text-input" ng-model="email"></li>
             <li class="topcoat-list__item"><label class="label-account">Date de naissance <input type="text" class="topcoat-text-input" ng-model="dob"></li>
-            <!-- <li class="topcoat-list__item"><label class="label-account">Niveau de tennis <input type="text" class="topcoat-text-input" ng-model="level"></li> --> 
-            <li class="topcoat-list__item"><label class="label-account">Niveau de tennis  Search: <input ng-model="query">
-                <li ng-repeat="key, value) in levelsMap | filter:query">
-                    <td> {{key}} </td> <td> {{ value }} </td>
-                </li>
-            </li>
+            <li class="topcoat-list__item"><label class="label-account">Niveau de tennis  <input type="text" class="topcoat-text-input" ng-model="levelSelected" bs-typeahead="keys">
             <li class="topcoat-list__item"><label class="label-account">Club de tennis favori <input type="text" class="topcoat-text-input"></li>
             <li class="topcoat-list__item"><button class="topcoat-button--cta" ng-click="validate()">Valider</button> ou <a href="#/slots">Annuler</a></li>
         </ul>

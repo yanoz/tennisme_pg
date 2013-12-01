@@ -23,59 +23,58 @@ function ClubsCtrl ($scope, $http) {
 };
 
 function ProfileCtrl ($scope, $http, getProfile) {
- $scope.levelsMap={
-    '0': 'nc',
-    '1': '30/5',
-    '2': '30/4', 
-    '3': '30/3',
-    '4': '30/2',
-    '5': '30/1',
-    '6': '30',
-    '7': '15/5',
-    '8': '15/4',
-    '9': '15/3',
-    '10': '15/2',
-    '11': '15/1',
-    '12': '15',
-    '13': '5/6',
-    '14': '4/6',
-    '15': '3/6',
-    '16': '2/6',
-    '17': '1/6',
-    '18': '0',
-    '19': '-2/6',
-    '20': '-4/6',
-    '21': '-15',
-    '22': '-30',
-    '23': 'Prom',
-    '24': '1ère',
+
+ var levelsMap = {
+    'nc' : '0' ,
+    '30/5' : '1' ,
+    '30/4' : '2' , 
+    '30/3' : '3' ,
+    '30/2' : '4' ,
+    '30/1' : '5' ,
+    '30' : '6' ,
+    '15/5' : '7' ,
+    '15/4' : '8' ,
+    '15/3' : '9' ,
+    '15/2' : '10' ,
+    '15/1' : '11',
+    '15' : '12',
+    '5/6' : '13' ,
+    '4/6' : '14' ,
+    '3/6' : '15' ,
+    '2/6' : '16' ,
+    '1/6' : '17' ,
+    '0' : '18' ,
+    '-2/6' : '19' ,
+    '-4/6' : '20' ,
+    '-15' : '21' ,
+    '-30' : '22' ,
+    'Prom' : '23' ,
+    '1&egrave;re' : '24'
   }
-  Object.prototype.getKeyByValue = function( value ) {
-    for( var prop in this ) {
-        if( this.hasOwnProperty( prop ) ) {
-             if( this[ prop ] === value )
-                 return prop;
-        }
-    }
-  }
+
+  $scope.keys = Object.keys(levelsMap);
+  // $scope.values = keys.map(function(v) { return levelsMap[v]; });
+  
+ 
   getProfile.async().then(function(d) {
     $scope.name = d.fullname;
     $scope.email = d.email;
     $scope.gender = d.gender;
-    $scope.level = $scope.levelsMap[d.level];
+    $scope.levelSelected = $scope.keys[d.level];
     $scope.dob = d.date_of_birth;
   });
-  $scope.levelSelected = undefined;
-  // $scope.value = levelsMap.getKeyByValue($scope.level);
+
 
   $scope.validate = function()  {
     $http.defaults.useXDomain = true;
     var postData = {};
     postData['auth_token'] = 'zvLgHfsSMKb8B7yjGGUj';
-    postData['user'] = {date_of_birth: $scope.dob, email: $scope.email, phone_number: $scope.phone , level:$scope.level};
-    $http.put('http://tennis-me.com/account', angular.toJson(postData))
+    postData['user'] = {date_of_birth: $scope.dob, email: $scope.email, phone_number: $scope.phone , level:levelsMap[$scope.levelSelected]};
+    alert(angular.toJson(postData))
+    $http.post('http://tennis-me.com/account', angular.toJson(postData))
       .error(function(data, status) {
         alert(data)
     });
+    
   }
 };
