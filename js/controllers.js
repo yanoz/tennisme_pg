@@ -15,7 +15,17 @@ function SlotsCtrl ($scope,$location, $http, getSlots) {
 };
 
 function SlotCtrl ($scope, $routeParams,$location,$http) {
- $scope.date = $routeParams.date;
+  var slotDate = Date.parseExact("2013-12-07", "yyyy-MM-dd");
+  var weekday=new Array(7);
+  weekday[0]="Lundi";
+  weekday[1]="Mardi";
+  weekday[2]="Mercedi";
+  weekday[3]="Jeudi";
+  weekday[4]="Vendredi";
+  weekday[5]="Samedi";
+  weekday[6]="Dimanche";
+  $scope.day = weekday[slotDate.getDay()];
+ // $scope.date = Date.parseExact("2013-12-07", "yyyy-MM-dd");
 };
 
 function ClubsCtrl ($scope, $http) {
@@ -48,8 +58,7 @@ function ProfileCtrl ($scope, $http, getProfile) {
     '-4/6' : '20' ,
     '-15' : '21' ,
     '-30' : '22' ,
-    'Prom' : '23' ,
-    '1&egrave;re' : '24'
+    '1&egrave;re' : '23'
   }
 
   $scope.keys = Object.keys(levelsMap);
@@ -70,8 +79,8 @@ function ProfileCtrl ($scope, $http, getProfile) {
     var postData = {};
     postData['auth_token'] = 'zvLgHfsSMKb8B7yjGGUj';
     postData['user'] = {date_of_birth: $scope.dob, email: $scope.email, phone_number: $scope.phone , level:levelsMap[$scope.levelSelected]};
-    alert(angular.toJson(postData))
-    $http.post('http://tennis-me.com/account', angular.toJson(postData))
+  
+    $http.put('http://tennis-me.com/account', angular.toJson(postData))
       .error(function(data, status) {
         alert(data)
     });
