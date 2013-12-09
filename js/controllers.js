@@ -15,15 +15,15 @@ function SlotsCtrl ($scope,$location, $http, getSlots) {
 };
 
 function SlotCtrl ($scope, $routeParams,$location,$http) {
-  var slotDate = Date.parseExact("2013-12-07", "yyyy-MM-dd");
+  var slotDate = Date.parseExact($routeParams.date, "yyyy-MM-dd");
   var weekday=new Array(7);
-  weekday[0]="Lundi";
-  weekday[1]="Mardi";
-  weekday[2]="Mercedi";
-  weekday[3]="Jeudi";
-  weekday[4]="Vendredi";
-  weekday[5]="Samedi";
-  weekday[6]="Dimanche";
+  weekday[1]="Lundi";
+  weekday[2]="Mardi";
+  weekday[3]="Mercedi";
+  weekday[4]="Jeudi";
+  weekday[5]="Vendredi";
+  weekday[6]="Samedi";
+  weekday[7]="Dimanche";
   $scope.day = weekday[slotDate.getDay()];
  // $scope.date = Date.parseExact("2013-12-07", "yyyy-MM-dd");
 };
