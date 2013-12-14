@@ -4,10 +4,36 @@ function NavCtrl($scope, $location) {
   };
 }
 
-function SlotsCtrl ($scope,$location, $http, getSlots) {
+function SlotsCtrl ($scope,$location, $http, getSlots, printer) {
+  var weekday=new Array(7);
+  weekday[0]="Dimanche";
+  weekday[1]="Lundi";
+  weekday[2]="Mardi";
+  weekday[3]="Mercredi";
+  weekday[4]="Jeudi";
+  weekday[5]="Vendredi";
+  weekday[6]="Samedi";
+
+  var month=new Array();
+  month[0]="Janvier";
+  month[1]="F&eacute;vrier";
+  month[2]="Mars";
+  month[3]="Avril";
+  month[4]="Mai";
+  month[5]="Juin";
+  month[6]="Juillet";
+  month[7]="Aout";
+  month[8]="Septembre";
+  month[9]="Octobre";
+  month[10]="Novembre";
+  month[11]="D&eacute;cembre";
+
+  
   getSlots.async().then(function(d) {
-    $scope.slots = d;
+    $scope.slots = printer.printSlots(d); 
   });
+
+
 
   $scope.page = function (path) {
       $location.path(path);

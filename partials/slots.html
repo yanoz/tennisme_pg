@@ -28,7 +28,7 @@
     <div class="topcoat-list__container list">
         <h2 class="topcoat-list__header">Vos disponibilités</h2>
         <ul class="topcoat-list">
-             <li class="topcoat-list__item" ng-repeat="slot in slots" ng-click="page('/slots/{{slot.date}}')"><b>{{slot.slotDate}} </b>{{slot.slotDay}}<br />{{slot.slotMonth}}</li>
+             <li class="topcoat-list__item" ng-repeat="slot in slots" ng-click="page('/slots/{{slot.date}}')"><b>{{slot.date}} </b>{{slot.slotDay}}<br />{{slot.slotMonth}}</li>
         </ul>
     </div>
 </div>
