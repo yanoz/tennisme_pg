@@ -28,6 +28,33 @@ tennisme.factory('phonegapReady', function() {
     };
 });
 
+tennisme.factory('geolocation', function ($rootScope, phonegapReady) {
+  return {
+    getCurrentPosition: function (onSuccess, onError, options) {
+        navigator.geolocation.getCurrentPosition(function () {
+               var that = this,
+               args = arguments;
+
+               if (onSuccess) {
+                   $rootScope.$apply(function () {
+                        onSuccess.apply(that, args);
+                   });
+                   }
+               }, function () {
+                    var that = this,
+                    args = arguments;
+
+                   if (onError) {
+                        $rootScope.$apply(function () {
+                            onError.apply(that, args);
+                        });
+                   }
+               },
+            options);
+        }
+    };
+});
+
 tennisme.factory('getSlots', function($http) {
   var getSlots = {
     async: function() {
@@ -85,6 +112,25 @@ tennisme.factory('printer', function() {
               slots[key].formatedDate = weekday[slotDate.getDay()].concat(' ', slots[key].slotDate, ' ', slots[key].slotMonth);
             });
             return slots;
+        },
+        printAddress: function(data) {
+          var geocoder = new google.maps.Geocoder();
+          var latitude = data.coords.latitude;
+          var longitude = data.coords.longitude;
+          var latlng = new google.maps.LatLng(latitude,longitude);
+          var address;
+          geocoder.geocode({'latLng': latlng}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              if (results[0]) {
+                address = results[0].formatted_address;
+              } else {
+                alert("No results found");
+              }
+            } else {
+              alert("Geolocation failed due to: " + status);
+            } 
+          });
+          return address;
         }
     };
 });

@@ -104,19 +104,8 @@
             </li>
             <b>Lieu</b>
             <li class="topcoat-list__item">
-                <div class="topcoat-tab-bar">
-                   <label class="topcoat-tab-bar__item">
-                     <input type="radio" name="topcoat" class="hide-input">
-                     <button class="topcoat-tab-bar__button">A proximité</button>
-                   </label>
-                   <label class="topcoat-tab-bar__item">
-                     <input type="radio" name="topcoat">
-                     <button class="topcoat-tab-bar__button">Autre adresse</button>
-                   </label>
-                   <label class="topcoat-tab-bar__item">
-                     <input type="radio" name="topcoat">
-                     <button class="topcoat-tab-bar__button">Club</button>
-                   </label>
+                <div ng-controller="GeolocationCtrl">
+                    {{position}}
                 </div>
             </li>
         </ul>

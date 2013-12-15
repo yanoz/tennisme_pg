@@ -14,7 +14,15 @@ function SlotsCtrl ($scope,$location, $http, getSlots, printer) {
 };
 
 function SlotCtrl ($scope, $routeParams,$location,$http) {
-    $scope.slotDate = $routeParams.formatedDate;
+  $scope.slotDate = $routeParams.formatedDate;
+};
+
+function GeolocationCtrl ($scope,$rootScope, printer) {
+  var pos;
+  navigator.geolocation.getCurrentPosition(function(position) {
+    $scope.position = position.coords.latitude;
+    // addr = printer.printAddress(position);
+  },function(e) { console.log("Error retrieving position " + e.code + " " + e.message) });
 };
 
 function ClubsCtrl ($scope, $http) {

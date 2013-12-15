@@ -15,16 +15,6 @@
   padding: 25px 0;
 }
 
-input {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  margin: 0;
-  padding: 0;
-  border: 0;
-  opacity: 0.001;
-}
-
 
 .topcoat-button-bar__item > input {
   border: 0;
