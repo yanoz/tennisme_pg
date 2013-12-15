@@ -45,24 +45,46 @@ tennisme.factory('getSlots', function($http) {
 tennisme.factory('printer', function() {
     return {
         printSlots: function(data) {
+            var weekday=new Array(7);
+            weekday[0]="Dimanche";
+            weekday[1]="Lundi";
+            weekday[2]="Mardi";
+            weekday[3]="Mercredi";
+            weekday[4]="Jeudi";
+            weekday[5]="Vendredi";
+            weekday[6]="Samedi";
+
+            var month=new Array();
+            month[0]="Janvier";
+            month[1]="Fevrier";
+            month[2]="Mars";
+            month[3]="Avril";
+            month[4]="Mai";
+            month[5]="Juin";
+            month[6]="Juillet";
+            month[7]="Aout";
+            month[8]="Septembre";
+            month[9]="Octobre";
+            month[10]="Novembre";
+            month[11]="Decembre";
+
             var rawData = angular.fromJson(data);
             var slots = {};
             angular.forEach(rawData, function(value, key){
-              alert(value.date);
-              // var slotDate = Date.parseExact(value.date, "yyyy-MM-dd");
-              // slots[key] = value;
-              // slots[key].slotDate=slotDate.getDate();
-              // if (key == 0) {
-              //   slots[key].slotDay="Aujourd\'hui (".concat(weekday[slotDate.getDay()], ")");
-              // } else if (key == 1) {
-              //   slots[key].slotDay="Demain (".concat(weekday[slotDate.getDay()], ")");
-              // } else {
-              //   slots[key].slotDay=weekday[slotDate.getDay()];
-              // }   
-              // slots[key].slotMonth=month[slotDate.getMonth()];
-              // slots[key].formatedDate = weekday[slotDate.getDay()].concat(' ', slots[key].slotDate, ' ', slots[key].slotMonth);
+              var slotDate = Date.parseExact(value.date, "yyyy-MM-dd");
+              slots[key] = value;
+              slots[key].slotDate=slotDate.getDate();
+              if (key == 0) {
+                slots[key].slotDay="Aujourd\'hui (".concat(weekday[slotDate.getDay()], ")");
+              } else if (key == 1) {
+                slots[key].slotDay="Demain (".concat(weekday[slotDate.getDay()], ")");
+              } else {
+                slots[key].slotDay=weekday[slotDate.getDay()];
+              }   
+              slots[key].slotMonth=month[slotDate.getMonth()];
+              slots[key].formatedDate = weekday[slotDate.getDay()].concat(' ', slots[key].slotDate, ' ', slots[key].slotMonth);
             });
-            return data;
+            return slots;
         }
     };
 });

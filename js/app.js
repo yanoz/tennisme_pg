@@ -2,7 +2,7 @@ var tennisme = angular.module('tennisme',['shoppinpal.mobile-menu', '$strap.dire
     .config(['$routeProvider',function($routeProvider){
         $routeProvider.
       when('/slots', {templateUrl: 'partials/slots.html',   controller: 'SlotsCtrl'}).
-      when('/slots/:date', {templateUrl: 'partials/slot.html', controller: 'SlotCtrl'}).
+      when('/slots/:formatedDate', {templateUrl: 'partials/slot.html', controller: 'SlotCtrl'}).
       when('/clubs', {templateUrl: 'partials/clubs.html',   controller: 'ClubsCtrl'}).
       when('/account', {templateUrl: 'partials/account.html',   controller: 'ProfileCtrl'}).
       otherwise({redirectTo: '/slots'});
