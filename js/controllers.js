@@ -6,23 +6,34 @@ function NavCtrl($scope, $location) {
 
 function SlotsCtrl ($scope,$location, $http, getSlots, printer) {
   getSlots.async().then(function(d) {
-    $scope.slots = printer.printSlots(d);
+    $scope.slots = d;
+    $scope.formatedSlots = printer.printSlots(d);
   });
   $scope.page = function (path) {
     $location.path(path);
   };
 };
 
-function SlotCtrl ($scope, $routeParams,$location,$http) {
-  $scope.slotDate = $routeParams.formatedDate;
+function SlotCtrl ($scope, $routeParams,$location,$http, printer) {
+  $scope.printableDate = printer.printSlotDate($routeParams.slotDate);
+  $scope.validate = function()  {
+    $http.defaults.useXDomain = true;
+    var postData = {};
+
+    postData['auth_token'] = 'zvLgHfsSMKb8B7yjGGUj';
+    postData['availability_form_availability'] = {date: $scope.slotDate, latitude: '43.557973720796575', longitude: '7.029137138329783', mmorning: $scope.mmorning,
+      midday: $scope.midday, afternoon: $scope.afternoon, evening: $scope.evening};
+  
+  alert(angular.toJson(postData));
+    $http.put('http://tennis-me.com/my_availabilities', angular.toJson(postData))
+      .error(function(data, status) {
+        alert(data)
+    });
+  }
 };
 
-function GeolocationCtrl ($scope,$rootScope, printer) {
-  var pos;
-  navigator.geolocation.getCurrentPosition(function(position) {
-    $scope.position = position.coords.latitude;
-    // addr = printer.printAddress(position);
-  },function(e) { console.log("Error retrieving position " + e.code + " " + e.message) });
+function GeolocationCtrl ($scope,geolocation) {
+  $scope.city = geolocation.getCurrentCity();
 };
 
 function ClubsCtrl ($scope, $http) {

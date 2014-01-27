@@ -26,87 +26,45 @@
         </div>
     </div>
     <div class="topcoat-list__container list">
-        <h2 class="topcoat-list__header"><b>{{slotDate}}</b> Nouvelle disponibilité</h2>
+        <h2 class="topcoat-list__header"><b>{{printableDate}}</b> Nouvelle disponibilité</h2>
         <ul class="topcoat-list">
-            <b>Horaire</b>
+           
             <li class="topcoat-list__item">
-                
+                <b>Horaire</b>
                 <div class="topcoat-button-bar">
                     <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">7h</button>
+                        <input type="checkbox" ng-model="mmorning" ng-init="mmorning=false">
+                        <button class="topcoat-button-bar__button">Matin</button>
                     </label>
                     <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">8h</button>
+                        <input type="checkbox" ng-model="midday" ng-init="midday=false">
+                        <button class="topcoat-button-bar__button">Midi</button>
                     </label>
                     <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">9h</button>
+                        <input type="checkbox" ng-model="afternoon" ng-init="afternoon=false">
+                        <button class="topcoat-button-bar__button">Après-midi</button>
                     </label>    
                     <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">10h</button>
-                    </label>
-                    <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">11h</button>
+                        <input type="checkbox" ng-model="evening" ng-init="evening=false">
+                        <button class="topcoat-button-bar__button">Soir</button>
                     </label>
                 </div>
             </li>
+            
             <li class="topcoat-list__item">
-                <div class="topcoat-button-bar">
-                   <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">12h</button>
-                    </label>
-                    <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">13h</button>
-                    </label>
-                </div>
-            </li>
-            <li class="topcoat-list__item">
-                                <div class="topcoat-button-bar">
-                   <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">14h</button>
-                    </label>
-                    <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">15h</button>
-                    </label>
-                     <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">16h</button>
-                    </label>
-                    <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">17h</button>
-                    </label>
-                    <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">18h</button>
-                    </label>
-                </div>
-            </li>
-            <li class="topcoat-list__item">
-                <div class="topcoat-button-bar">
-                   <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">19h</button>
-                    </label>
-                    <label class="topcoat-button-bar__item">
-                        <input type="checkbox">
-                        <button class="topcoat-button-bar__button">20h</button>
-                    </label>
-                </div>
-            </li>
-            <b>Lieu</b>
-            <li class="topcoat-list__item">
+                <b>Lieu</b>
                 <div ng-controller="GeolocationCtrl">
-                    {{position}}
+                    <input type="search" value="" placeholder="search" class="topcoat-search-input">
                 </div>
+            </li>
+            <li class="topcoat-list__item">
+                <b>Message</b>
+                <div ng-controller="GeolocationCtrl">
+                    <input type="search" value="" placeholder="search" class="topcoat-search-input">
+                </div>
+            </li>
+            <li class="topcoat-list__item">
+               <button class="topcoat-button--cta" ng-click="validate()">Valider</button> ou <a href="#/slots">Annuler</a>
             </li>
         </ul>
     </div>
